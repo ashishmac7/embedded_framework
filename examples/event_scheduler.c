@@ -121,7 +121,6 @@ int main()
         printf("Event handler created with ID: %d\n", my_eventhandler_id);
     }
 
-    
     wsbr_fds_init(ctxt);
 
     struct arm_event_s my_event = {0};

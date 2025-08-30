@@ -1,0 +1,22 @@
+name: Coding Style Check
+
+on: [push, pull_request]
+
+jobs:
+  style-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: sudo apt-get install -y clang-format
+
+      - name: Run clang-format check
+        run: |
+          # Check all .c/.h files
+          files=$(find . -regex '.*\.\(c\|h\)$')
+          for f in $files; do
+            clang-format --dry-run --Werror $f
+          done

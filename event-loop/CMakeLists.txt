@@ -12,7 +12,7 @@ include_directories(
 set(SOURCES
     source/event.c
     source/ns_timeout.c
-    # source/ns_timer.c
+    source/ns_timer.c
     source/system_timer.c
     platform/nsdynmemLIB_posix.c
     platform/platform_posix.c
@@ -27,4 +27,4 @@ target_include_directories(event_loop_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../common
 )
 
-target_compile_definitions(event_loop_lib PUBLIC MBED_CONF_NANOSTACK_EVENTLOOP_USE_PLATFORM_TICK_TIMER)
+# target_compile_definitions(event_loop_lib PUBLIC MBED_CONF_NANOSTACK_EVENTLOOP_USE_PLATFORM_TICK_TIMER)

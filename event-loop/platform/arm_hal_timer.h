@@ -27,7 +27,7 @@ extern "C" {
 /**
  * \brief This function perform timer init.
  */
-extern void platform_timer_enable(void);
+extern int platform_timer_enable(void);
 
 /**
  * \brief This function is API for set Timer interrupt handler for stack

@@ -98,7 +98,7 @@ void my_event_handler(arm_event_s *event) {
     }
 }
 
-int cmt_timer_init();
+int platform_timer_enable();
 void event_scheduler_signal_init(int *schedulerfd);
 int main()
 {
@@ -106,7 +106,7 @@ int main()
     struct nmse_ctxt *ctxt = &g_ctxt;
     event_scheduler_signal_init(ctxt->schedulerfd);
 
-    ctxt->timerfd = cmt_timer_init();
+    ctxt->timerfd = platform_timer_enable();
     if (ctxt->timerfd < 0) {
         printf("Failed to initialize timer.\n");
         return -1;
@@ -129,7 +129,7 @@ int main()
     my_event.receiver = my_eventhandler_id;
     my_event.sender = 0;
 
-    if(eventOS_event_send_every(&my_event,eventOS_event_timer_ms_to_ticks(1000))) {
+    if(eventOS_event_send_every(&my_event,eventOS_event_timer_ms_to_ticks(1500))) {
         printf("Event sent successfully.\n");
     } else {
         printf("Failed to send event.\n");
